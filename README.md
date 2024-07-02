@@ -1,8 +1,9 @@
-# Course Information Steps 1.1 to 1.2
+# Course fullstackope
 
-This folder covers part 0 with the files for exercises 0.4, 0.5 and 0.6.
+In this repository I will upload the exercises from the course at https://fullstackopen.com/
 
-## Contenido
-- 0.4: New note diagram
-- 0.5: Single page app diagram
-- 0.6: New note in Single page app diagram
+Folders will be created for each part of the group as all the exercises for that part are completed in order to be sent.
+
+## Content
+- Part 0: Fundamentals of Web apps
+- Part 1: Introduction to React
