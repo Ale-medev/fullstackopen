@@ -1,5 +1,7 @@
 import { useState } from 'react'
 
+const Headline = ({title}) => <h1>{title}</h1>
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -22,26 +24,37 @@ const App = () => {
     selected !== randomNumer ? setSelected(randomNumer) : selected === 7 ? setSelected(0) : setSelected(selected + 1)
   }
 
-
-
   const handleVote = ()=>{
-    const newPoints = [...points]
-    newPoints[selected] += 1
-    setPoints(newPoints)
+    const updatedPoints = [...points]
+    updatedPoints[selected] += 1
+    setPoints(updatedPoints)
   }
 
+  const maxPoints = Math.max(...points)
+  const maxIndex = points.indexOf(maxPoints);
 
-  
 
   return (
     <div>
+      <Headline title='Anecdote of the day' />
+      
       <p>{anecdotes[selected]}</p>
 
       <p>has {points[selected]} votes</p>
 
       <button onClick={handleVote}>vote</button>
-      
+
       <button onClick={handleRandomAnecdotes}>next anecdote</button>
+
+      <Headline title='Anecdote with most votes' />
+
+      {
+        points.every((item) => item === 0) ? (
+          <p>There are still no voted anecdotes</p>
+        ) : (
+          <p>{anecdotes[maxIndex]}</p>
+        )
+      }
     </div>
   )
 }
