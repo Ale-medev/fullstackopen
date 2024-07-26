@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
+import personService from './services/personService';
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
@@ -11,8 +11,8 @@ const App = () => {
   const [searchPerson, setSearchPerson] = useState('')
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/persons')
+    personService
+      .getAll()
       .then(response => {
         setPersons(response.data)
       })
@@ -40,12 +40,11 @@ const App = () => {
     if(persons.some(person => person.name === addPerson.name)){
       alert(`${newName} is already added to phonebook`)
     }else{
-
-      axios
-        .post('http://localhost:3001/persons', addPerson)
+      personService
+        .create(addPerson)
         .then(response => {
-          setPersons(persons.concat(response.data))
-      })
+          setPersons(persons.concat(response.data));
+      });
     }
 
     setNewName('')
