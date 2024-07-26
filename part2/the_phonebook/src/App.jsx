@@ -18,19 +18,19 @@ const App = () => {
       })
   }, [])
 
-  const handleName = (e) =>{
+  const handleName = (e) => {
     setNewName(e.target.value)
   }
 
-  const handleNumber = (e) =>{
+  const handleNumber = (e) => {
     setNewNumber(e.target.value)
   }
 
-  const handleSearch = (e) =>{
+  const handleSearch = (e) => {
     setSearchPerson(e.target.value)
   }
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault()
     const addPerson = {
       name: newName,
@@ -55,6 +55,17 @@ const App = () => {
     person.name.toLowerCase().includes(searchPerson.toLowerCase())
   )
 
+  const removePerson = (person) => {
+    if (window.confirm(`Delete ${person.name}`)) {
+      personService
+        .remove(person.id)
+        .then(() => {
+          setPersons(persons.filter(item => item.id !== person.id));
+      })
+    }
+    
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -73,7 +84,7 @@ const App = () => {
 
       <h2>Numbers</h2>
 
-      <Persons filteredPersons={filteredPersons}/>
+      <Persons filteredPersons={filteredPersons} removePerson={removePerson} />
 
     </div>
   )
