@@ -54,6 +54,20 @@ const App = () => {
           .then(response => {
             setPersons(persons.map(person => person.id !== updatePerson.id ? person : response.data))
           })
+          .catch(() => {
+            setNotificationMessage(
+              {
+                message: `Information of ${addPerson.name} has already been removed from server`,
+                error: true
+              }
+            )
+
+            setTimeout(() => {
+              setNotificationMessage(null)
+            }, 5000)
+
+            setPersons(persons.filter(n => n.id !== updatePerson.id))
+          })
         }
     }else {
       personService
@@ -62,9 +76,8 @@ const App = () => {
           setPersons(persons.concat(response.data));
       });
 
-      setNotificationMessage(
-        `Added ${addPerson.name}`
-      )
+      setNotificationMessage({message: `Added ${addPerson.name}`})
+
       setTimeout(() => {
         setNotificationMessage(null)
       }, 5000)
@@ -84,6 +97,20 @@ const App = () => {
         .remove(person.id)
         .then(() => {
           setPersons(persons.filter(item => item.id !== person.id));
+      })
+      .catch(() => {
+        setNotificationMessage(
+          {
+            message: `Information of ${person.name} has already been removed from server`,
+            error: true
+          }
+        )
+
+        setTimeout(() => {
+          setNotificationMessage(null)
+        }, 5000)
+
+        setPersons(persons.filter(item => item.id !== person.id));
       })
     }
     
