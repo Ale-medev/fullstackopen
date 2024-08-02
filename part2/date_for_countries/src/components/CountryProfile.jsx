@@ -10,11 +10,11 @@ const CountryProfile = ({ country }) => (
         <p><strong>languages:</strong></p>
 
         <ul>
-        {
-            Object.values(country.languages).map((language, index) => (
-                <li key={index}>{language}</li>
-            ))
-        }
+            {
+                Object.values(country.languages).map((language, index) => (
+                    <li key={index}>{language}</li>
+                ))
+            }
         </ul>
 
         <img src={country.flags.png} alt={`Flag ${country.name.common}`} />
