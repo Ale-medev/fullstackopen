@@ -1,0 +1,11 @@
+.filter{
+  margin-bottom:1rem;
+}
+
+.profile-info{
+  padding: 0;
+}
+
+.profile-info li{
+  list-style: none;
+}
