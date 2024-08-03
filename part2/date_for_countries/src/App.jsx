@@ -13,7 +13,10 @@ function App() {
   useEffect(()=>{
     axios.get('https://studies.cs.helsinki.fi/restcountries/api/all')
     .then(res => setCountries(res.data))
+    .catch(err => console.error(err));
   } ,[])
+
+  // 
 
   const handleSearch = (e) => {
     setSearchCountry(e.target.value)
