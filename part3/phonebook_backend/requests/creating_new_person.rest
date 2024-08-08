@@ -5,3 +5,21 @@ Content-Type: application/json
     "name": "Michael Brown", 
     "number": "246-8091"
 }
+
+###
+
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "name": "Sarah Davis"
+}
+
+###
+
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+    "number": "555-135-7924"
+}
