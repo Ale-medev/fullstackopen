@@ -9,3 +9,10 @@ Folders will be created for each part as I complete all the exercises for that s
 - **Part 1: Introduction to React**
 - **Part 2: Communicating with server**
 - **Part 3: Programming a server with NodeJS and Express**
+
+
+## Deployment
+
+The Phonebook application is deployed on Render. You can access it at the following link:
+
+[Phonebook Backend](https://phonebook-backend-yf8v.onrender.com/)
