@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:ui": "@powershell Remove-Item -Recurse -Force ../../part3/phonebook_backend/dist; cd ../../part2/the_phonebook; npm run build; Copy-Item -Recurse dist ../../part3/phonebook_backend",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "server": "json-server -p3001 --watch db.json"
